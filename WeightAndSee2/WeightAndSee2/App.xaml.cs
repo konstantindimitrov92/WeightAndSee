@@ -13,7 +13,9 @@ namespace WeightAndSee2
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<SQLiteUserStore>();
+            DependencyService.Register<SQLiteUserProfileStore>();
+            DependencyService.Register<SQLiteUserDataPointStore>();
             MainPage = new AppShell();
         }
 

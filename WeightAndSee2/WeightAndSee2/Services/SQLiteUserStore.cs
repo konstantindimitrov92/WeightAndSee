@@ -3,33 +3,30 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using WeightAndSee2.Models;
+
+using WeightAndSee2.Core;
+using SQLite;
+
 namespace WeightAndSee2.Services
 {
-    public class SQLiteUserStore : IDataStore<User>
+    public class SQLiteUserStore : SQLiteStore<User>
     {
-        Task<bool> IDataStore<User>.AddItemAsync(User item)
+        public SQLiteUserStore()
         {
-            throw new NotImplementedException();
-        }
-
-        Task<bool> IDataStore<User>.DeleteItemAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<User> IDataStore<User>.GetItemAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<IEnumerable<User>> IDataStore<User>.GetItemsAsync(bool forceRefresh)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<bool> IDataStore<User>.UpdateItemAsync(User item)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                Database.CreateTableAsync<User>().Wait();
+                User defaultUser = new User 
+                { 
+                    Username = "dbojadzievski@gmail.com", 
+                    Password = "", 
+                    CreatedAt = DateTime.Now, 
+                    ModifiedAt = null, 
+                    ID = 0 
+                };
+                Database.InsertOrReplaceAsync(defaultUser).Wait();
+            }
+            catch (Exception e) { }
         }
     }
 }

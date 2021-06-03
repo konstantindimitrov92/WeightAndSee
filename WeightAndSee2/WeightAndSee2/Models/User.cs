@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
+using SQLite;
 namespace WeightAndSee2.Models
 {
-    public class User
+    public class User : BaseModel
     {
-        public Int32 Users_ID { get; set; }
-
-        public String Username { get; set; }
-        public String Password { get; set; }
-
-        public DateTime CreatedAt { get; set; }
-        public DateTime? ModifiedAt { get; set; }
+        [MaxLength(255)]
+        public String       Username { get; set; }
+        [MaxLength(255)]
+        public String       Password { get; set; }
     }
 }

@@ -11,6 +11,9 @@ namespace WeightAndSee2.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<User> UserDataStore => DependencyService.Get<SQLiteUserStore>();
+        public IDataStore<UserProfile> ProfileDataStore => DependencyService.Get<SQLiteUserProfileStore>();
+        public IDataStore<UserDataPoint> DataPointStore => DependencyService.Get<SQLiteUserDataPointStore>();
 
         bool isBusy = false;
         public bool IsBusy

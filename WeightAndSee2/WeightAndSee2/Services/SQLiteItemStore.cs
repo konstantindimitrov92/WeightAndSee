@@ -34,7 +34,7 @@ namespace WeightAndSee2.Services
             throw new NotImplementedException();
         }
 
-        Task<IEnumerable<Item>> IDataStore<Item>.GetItemsAsync(bool forceRefresh)
+        Task<List<Item>> IDataStore<Item>.GetItemsAsync(bool forceRefresh)
         {
             throw new NotImplementedException();
         }

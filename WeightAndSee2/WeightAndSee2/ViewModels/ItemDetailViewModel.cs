@@ -44,7 +44,7 @@ namespace WeightAndSee2.ViewModels
             try
             {
                 var item = await DataStore.GetItemAsync(itemId);
-                Id = item.Id;
+                Id = item.ID.ToString();
                 Text = item.Text;
                 Description = item.Description;
             }
